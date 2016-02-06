@@ -17,3 +17,29 @@ body {
 .navbar {
   margin-bottom: 20px;
 }
+
+.barra-lateral{
+    
+}
+
+.titulo-pagina h1{
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.view-producto p{
+    text-align: center;
+}
+
+.buscar-producto{
+    margin-bottom: 20px;
+}
+
+.footer-patri{
+    text-align: right;
+    margin-top: 40px;
+    padding-right: 50px;
+    padding-bottom: 10px;
+}

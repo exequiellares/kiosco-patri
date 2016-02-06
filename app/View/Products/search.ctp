@@ -1,5 +1,5 @@
 <?php
-    $this->assign('title','Listar Productos'); 
+    $this->assign('title','Buscar Productos'); 
 ?>
 <div>
     <div class="col-md-12 titulo-pagina">
@@ -11,6 +11,26 @@
             <?= $this->element('Products/index_menu')?>            
         </div>
         <div class="col-md-9">
+            
+            <div class="buscar-producto">
+                <?php echo $this->Form->create('search-form', array(
+                        'inputDefaults' => array(
+                                'div' => 'form-group',
+                                'label' => false,
+                                'wrapInput' => false,
+                                'class' => 'form-control'
+                        ),
+                        'class' => 'form-inline'
+                )); ?>
+                    <?php echo $this->Form->input('searchedStrings', array(
+                    )); ?>
+                   
+                    <?php echo $this->Form->submit('Buscar', array(
+                            'div' => 'form-group',
+                            'class' => 'btn btn-default'
+                    )); ?>
+                <?php echo $this->Form->end(); ?>
+            </div>
 
             <div>
                 <table class="table table-striped">

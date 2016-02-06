@@ -14,15 +14,13 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
-$cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
+		<?php echo 'Kiosco Patri v1.0 ' ?> -
 		<?php echo $this->fetch('title'); ?>
 	</title>
 	<?php
@@ -57,7 +55,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Productos</a></li>
+              <li class="active"><?= $this->Html->link('Productos', ['controller' => 'products', 'action' => 'index'])?></li>
 <!--              <li><a href="#">Ventas</a></li>
               <li><a href="#">Contacto</a></li>-->
 <!--              <li class="dropdown">
@@ -84,13 +82,15 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
     <div class="container">
 
-        <div class="">
             <?php echo $this->Flash->render(); ?>
 
             <?php echo $this->fetch('content'); ?>
-        </div>
 
     </div><!-- /.container -->
-
+    <div class="navbar-fixed-bottom">
+        <div class="footer-patri">
+            <small>Designed by Exequiel Lares - Todos los derechos reservados 2016</small>
+        </div>
+    </div>
 </body>
 </html>
