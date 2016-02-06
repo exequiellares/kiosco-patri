@@ -20,7 +20,7 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo 'Kiosco Patri v1.0 ' ?> -
+		<?php echo 'Kiosco Patri v0.1 ' ?> -
 		<?php echo $this->fetch('title'); ?>
 	</title>
 	<?php
