@@ -1,4 +1,9 @@
 <div>
+    <div>menu lateral</div>
+    <div>contenido</div>
+</div>
+
+<div>
     <table>
         <thead>
             <tr>
@@ -10,7 +15,7 @@
         <tbody>
             <?php foreach($products as $product): ?>
             <tr>
-                <td><?= $product['Product']['code']?></td>
+                <td><?= $product['Product']['id']?></td>
                 <td><?= $product['Product']['description']?></td>
                 <td><?= $this->Number->currency($product['Product']['price'], 'USD')?></td>
             </tr>
