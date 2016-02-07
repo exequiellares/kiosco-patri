@@ -31,7 +31,7 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    public $components = array('DebugKit.Toolbar', 'Flash', 'Paginator', 'Session');
+    public $components = array('Flash', 'Paginator', 'Session');
     public $helpers = array(
 		'Session',
 		'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
