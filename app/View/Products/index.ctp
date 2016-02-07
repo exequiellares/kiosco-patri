@@ -13,12 +13,17 @@
         <div class="col-md-9">
             <?php echo $this->Flash->render(); ?>
             <div>
+                <?php echo $this->Paginator->pagination(array(
+                        'ul' => 'pagination'
+                )); ?>
+            </div>
+            <div>
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th><?= __('ID')?></th>
-                            <th><?= __('Descripción')?></th>
-                            <th><?= __('Precio')?></th>
+                            <th><?= $this->Paginator->sort('id','ID')?></th>
+                            <th><?= $this->Paginator->sort('description','Descripción')?></th>
+                            <th><?= $this->Paginator->sort('price','Precio')?></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -40,9 +45,13 @@
                     </tbody>
                 </table>    
             </div>
-
+            <div>
+                <?php echo $this->Paginator->pagination(array(
+                        'ul' => 'pagination'
+                )); ?>
+            </div>
         </div>
-
+        
     </div>
     
 </div>

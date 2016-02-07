@@ -4,9 +4,18 @@ App::uses('AppController', 'Controller');
  * Products Controller
  */
 class ProductsController extends AppController {
+    
+    public $paginate = [
+        'limit' => 10,
+        'order' => [
+            'Product.id' => 'asc'
+        ]
+    ];
                 
     public function index(){
-        $products = $this->Product->find('all');
+        $this->Paginator->settings = $this->paginate;
+        $products = $this->Paginator->paginate('Product');
+//        $products = $this->Product->find('all');
         $this->set('products', $products);
         
     }
