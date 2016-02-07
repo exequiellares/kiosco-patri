@@ -62,14 +62,71 @@ Reiniciamos el servidor y ya deberiamos tener todo configurado correctamente
 $ sudo /etc/init.d/apache2 restart
 ```
 
+### Habilitar AllowOverride
+Editar el archivo apache2.conf
+
+```sh
+$ sudo gedit /etc/apache2/apache2.conf
+```
+
+Y modificamos donde pone 
+```sh
+AllowOverride None
+```
+Ponemos
+```sh
+AllowOverride All
+```
+En todos, luego reinicamos el servidor
+```sh
+$ sudo service apache2 restart
+```
+
 ### Kiosco-Patri
 Clonamos los archivos del repositorio con git:
 ```sh
 $ cd /var/www/html/
-$ git clone -b kiosco-patri-v0.1 --single-branch https://github.com/exequiellares/kiosco-patri.git
+$ git clone -b <branch> --single-branch https://github.com/exequiellares/kiosco-patri.git
 ```
+En <branch> ponemos el branch que deseamos descargar. Por ejemplo: master
 
 Tambien podemos descargar los archivos comprimidos y descomprimirlos en "/var/www/html/kiosco-patri-v1.0" desde https://github.com/exequiellares/kiosco-patri/releases
+
+Damos permisos los permisos necesarios a la carpeta
+```sh
+$ sudo chmod -R 777 /var/www/html
+```
+
+### Base de Datos (MySQL)
+En MySQL creamos una nueva base de datos de nombre "kiosco-patri" u otro de nuestra preferencia e importamos el archivo kiosco-patri/db/structure.sql en la base de datos.
+
+Podemos usar phpmyadmin u otro de nuestra preferencia.
+```sh
+$ sudo apt-get install phpmyadmin
+```
+
+Copiamos el archivo de configuracion y lo renombramos
+```sh
+$ cd /var/www/html/kiosco-patri/app/Config/
+$ cp database.php.default database.php
+```
+Dentro de database.php ponemos los datos de conexión de nuestra base de datos:
+```sh
+public $default = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'tu_usuario_mysql',
+		'password' => 'constraseña_mysql',
+		'database' => 'nombre_de_la_base_de_datos_kiosco-patri',
+		'prefix' => '',
+		'encoding' => 'utf8',
+	);
+```
+
+Guardamos los cambios y ya podemos usar el sistema. 
+Para acceder al mismo lo hacemos desde: http://localhost/kiosco-patri
+
 
 
 
