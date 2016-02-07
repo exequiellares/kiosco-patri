@@ -62,7 +62,14 @@ Reiniciamos el servidor y ya deberiamos tener todo configurado correctamente
 $ sudo /etc/init.d/apache2 restart
 ```
 
-### Kiosco-Patri V1.0
+### Kiosco-Patri
+Clonamos los archivos del repositorio con git:
+```sh
+$ cd /var/www/html/
+$ git clone -b kiosco-patri-v0.1 --single-branch https://github.com/exequiellares/kiosco-patri.git
+```
+
+Tambien podemos descargar los archivos comprimidos y descomprimirlos en "/var/www/html/kiosco-patri-v1.0" desde https://github.com/exequiellares/kiosco-patri/releases
 
 
 
