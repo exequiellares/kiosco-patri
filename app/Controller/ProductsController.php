@@ -146,11 +146,11 @@ class ProductsController extends AppController {
             else
             {
                 $keys = explode(' ', $searchStrings);
-                $where = '0';
+                $where = '1';
                 foreach ($keys as $key)
                 {   
                     
-                        $where .= ' OR (description LIKE \'%' . $key . '%\')';
+                        $where .= ' AND (description LIKE \'%' . $key . '%\')';
                 }
                  
                 $query = 'SELECT * FROM products as Product WHERE (' . $where. ')';

@@ -3,7 +3,7 @@
 ?>
 <div>
     <div class="col-md-12 titulo-pagina">
-            <h1>Lista de Productos</h1>
+            <h1>Buscar Productos</h1>
     </div>
     <div class="col-md-12">
         
@@ -23,6 +23,7 @@
                         'class' => 'form-inline'
                 )); ?>
                     <?php echo $this->Form->input('searchedStrings', array(
+                        'autofocus' => 'autofocus'
                     )); ?>
                    
                     <?php echo $this->Form->submit('Buscar', array(
