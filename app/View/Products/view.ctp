@@ -26,7 +26,7 @@
         </div>
         
         <div class="col-md-9 borde">
-
+            <?php echo $this->Flash->render(); ?>
             <div class="">
                 <table class="table table-striped">
                     <tr>

@@ -22,12 +22,17 @@ class ProductsController extends AppController {
             
             if($this->Product->save($this->request->data))
             {
-                $this->Flash->success(__('Producto registrado correctamente'));
+                $this->Flash->alert(__('Producto registrado correctamente'), [
+                    'params' => ['class' => 'alert-success']
+                    ]);
+                
                 $this->redirect(['action' => 'index']);
             }
             
-            $this->Flash->error(__('No se pudo registrar el producto'));
-//            $this->set('request', $this->request->data);
+            $this->Flash->alert(__('No se pudo registrar el producto'), [
+                    'params' => ['class' => 'alert-danger']
+                    ]);
+
         }
         
         
@@ -70,11 +75,15 @@ class ProductsController extends AppController {
                        
             if($this->Product->save($this->request->data))
             {
-                $this->Flash->success('Producto editado correctamente');
+                $this->Flash->alert(__('Producto editado correctamente'), [
+                    'params' => ['class' => 'alert-success']
+                    ]);
                 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error('No se pude editar el producto');
+            $this->Flash->alert(__('No se pudieron guardar los cambios en el producto'), [
+                    'params' => ['class' => 'alert-danger']
+                    ]);
         }
                 
         $product = $this->Product->findById($id);
@@ -94,11 +103,17 @@ class ProductsController extends AppController {
         
         if($this->Product->delete($id))
         {
-            $this->Flash->success(__('El producto fue eliminado'));
+            $this->Flash->alert(__('El producto fue eliminado'), [
+                    'params' => ['class' => 'alert-success']
+                    ]);
+            
         }
         else
         {
-            $this->Flash->error(__('No se pudo eliminar el producto'));
+            $this->Flash->alert(__('No se pudo eliminar el producto'), [
+                    'params' => ['class' => 'alert-danger']
+                    ]);
+           
         }
         
         return $this->redirect(['action' => 'index']);

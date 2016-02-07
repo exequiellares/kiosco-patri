@@ -11,7 +11,7 @@
             <?= $this->element('Products/index_menu')?>
         </div>
         <div class="col-md-9">
-
+            <?php echo $this->Flash->render(); ?>
             <div>
                  <?php echo $this->Form->create('Product', array(
                         'inputDefaults' => array(

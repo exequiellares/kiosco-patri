@@ -38,8 +38,12 @@ body {
 }
 
 .footer-patri{
-    text-align: right;
-    margin-top: 40px;
+        margin-top: 40px;
+        text-align: right;
+}
+
+.footer-patri small{
+    
     padding-right: 50px;
     padding-bottom: 10px;
 }

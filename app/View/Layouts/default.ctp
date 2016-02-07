@@ -82,13 +82,11 @@
 
     <div class="container">
 
-            <?php echo $this->Flash->render(); ?>
-
             <?php echo $this->fetch('content'); ?>
 
     </div><!-- /.container -->
-    <div class="navbar-fixed-bottom">
-        <div class="footer-patri">
+    <div class="navbar-fixed-bottom footer-patri">
+        <div>
             <small>Designed by Exequiel Lares - Todos los derechos reservados 2016</small>
         </div>
     </div>
