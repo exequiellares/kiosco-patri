@@ -134,33 +134,49 @@ class ProductsController extends AppController {
     public function search()
     {
         $products = array();
+        $this->paginate['conditions'] = [$this->Session->read('search-conditions')];
+        
         if($this->request->is('post'))
         {
             // perform the search
-            $searchStrings = $this->request->data['search-form']['searchedStrings'];
+            $searchStrings = $this->request->data['products']['searchedStrings'];
             
-            if(trim($searchStrings) == '')
-            {
-                $products = $this->Product->find('all');
-            }
-            else
-            {
+            if(trim($searchStrings) != '')
+            {                
                 $keys = explode(' ', $searchStrings);
-                $where = '1';
+                $conditions = '1';
                 foreach ($keys as $key)
-                {   
-                    
-                        $where .= ' AND (description LIKE \'%' . $key . '%\')';
+                {                       
+                    $conditions .= ' AND (Product.description LIKE \'%' . $key . '%\')';
+
                 }
-                 
-                $query = 'SELECT * FROM products as Product WHERE (' . $where. ')';
                 
-                $this->set('query',$query);
-                $products = $this->Product->query($query);
-               
+                /*
+                 * The $conditions have the conditions for the query where
+                 * this is "1 AND (Product.description LIKE '%keyword1%') AND (Product.description LIKE '%keyword2%')...
+                 * etc
+                 * This return the Products that have all the keywords ond his description
+                 */
+                
+                $this->set('query',$conditions);
+                
+                // Conditions to paginate
+                $this->paginate['conditions'] = [$conditions];
+                // Save into session to be accessed after refresh or change page
+                $this->Session->write('search-conditions', $conditions);
+                
             }
+            else{
+                //Find all, 1 = allways true
+                $this->paginate['conditions'] = [1];
+                // Save into session to be accessed after refresh or change page
+                $this->Session->write('search-conditions', 1);
+            }
+            
         }
-        
+        $this->Paginator->settings = $this->paginate;
+        $this->set('paginatesett', $this->Paginator->settings);
+        $products = $this->Paginator->paginate('Product');
         $this->set('products', $products);
     }
 

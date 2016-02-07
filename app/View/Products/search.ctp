@@ -13,14 +13,15 @@
         <div class="col-md-9">
             <?php echo $this->Flash->render(); ?>
             <div class="buscar-producto">
-                <?php echo $this->Form->create('search-form', array(
+                <?php echo $this->Form->create('products', array(
                         'inputDefaults' => array(
                                 'div' => 'form-group',
                                 'label' => false,
                                 'wrapInput' => false,
                                 'class' => 'form-control'
                         ),
-                        'class' => 'form-inline'
+                        'class' => 'form-inline',
+                        'action' => '/search'
                 )); ?>
                     <?php echo $this->Form->input('searchedStrings', array(
                         'autofocus' => 'autofocus'
@@ -32,7 +33,11 @@
                     )); ?>
                 <?php echo $this->Form->end(); ?>
             </div>
-
+            <div>
+                <?php echo $this->Paginator->pagination(array(
+                        'ul' => 'pagination'
+                )); ?>
+            </div>
             <div>
                 <table class="table table-striped">
                     <thead>
@@ -61,7 +66,11 @@
                     </tbody>
                 </table>    
             </div>
-
+            <div>
+                <?php echo $this->Paginator->pagination(array(
+                        'ul' => 'pagination'
+                )); ?>
+            </div>
         </div>
 
     </div>
